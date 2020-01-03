@@ -7,6 +7,7 @@ import { ItemListaComponent } from './item/item-lista/item-lista.component';
 import { ItemEditarComponent } from './item/item-editar/item-editar.component';
 import { InventarioComponent } from './inventario.component';
 import { InventarioRoutingModule } from './inventario-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { InventarioRoutingModule } from './inventario-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    InventarioRoutingModule
+    InventarioRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class InventarioModule { }

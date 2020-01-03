@@ -1,1 +1,94 @@
-<p>item-editar works!</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Buscar Items">
+        </div>
+        <div class="col-md-1"><button class="btn btn-primary">Buscar</button></div>
+
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-1 text-left">
+            NUEVO
+        </div>
+        <div class="col-md-11">
+            <hr>
+        </div>
+    </div>
+
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+        <div class="row mt-3">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" class="form-control" formControlName="nombre">
+                    <span *ngIf="!itemForm.get('nombre').valid && itemForm.get('nombre').touched" class="help-block">Por
+                        favor ingrese un nombre</span>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea row="2" id="descripcion" class="form-control" formControlName="descripcion"></textarea>
+                    <span *ngIf="!itemForm.get('descripcion').valid && itemForm.get('descripcion').touched"
+                        class="help-block">Por favor ingrese un descripcion</span>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="inputState">Categoria</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="inputState">Fabricante</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="descripcion">Precio</label>
+                    <input type="text" id="descripcion" class="form-control" formControlName="descripcion">
+                    <span *ngIf="!itemForm.get('descripcion').valid && itemForm.get('descripcion').touched"
+                        class="help-block">Por favor ingrese un descripcion</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="btn-group" data-toggle="buttons" aria-label="Basic example">
+                    <button type="button" class="btn btn-outline-primary">UNISEX</button>
+                    <button type="button" class="btn btn-outline-primary">UNISEX JUVENIL</button>
+                    <button type="button" class="btn btn-outline-primary">NENA</button>
+                    <button type="button" class="btn btn-outline-primary">VARON</button>
+                    <button type="button" class="btn btn-outline-primary">BEBE</button>
+                    <button type="button" class="btn btn-outline-primary">BEBA</button>
+                    <button type="button" class="btn btn-outline-primary">RECIEN NACIDO</button>
+                    <button type="button" class="btn btn-outline-primary">VARON JUVENIL</button>
+                    <button type="button" class="btn btn-outline-primary">NENA JUVENIL</button>
+                  </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button class="btn btn-primary" type="submit">GUARDAR</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h6>Inventario</h6>
+            <hr>
+        </div>
+    </div>
+
+</div>

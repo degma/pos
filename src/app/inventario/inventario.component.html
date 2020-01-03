@@ -1,22 +1,48 @@
-<div class="container-fluid mt-3">
-    <div class="row">
+<div class="container-fluid">
+    <div class="row mt-5">
         <div class="col-md-12">
             <h5>Items & Inventario</h5>
-            <hr>    
-            <ul>
-                
-                
-                <button type="button" class="btn btn-outline-primary btn-lg">
-                    <i class="fas fa-plus"></i>
-                    <br>
-                    
-                    Nuevo
-                    <br>
-                </button>
-                
-            </ul>
+            <hr>
+
+
+            <button type="button" class="btn btn-outline-primary itemsbtn" style="width: 120px; height: 120px;" [routerLink]="'/inventario/nuevo'">
+                <i class="fas fa-plus fa-2x"></i>
+                <br>
+                NUEVO
+                <br>
+            </button>
+
+
+            <button type="button" class="btn btn-outline-primary itemsbtn" style="width: 120px; height: 120px;">
+                <i class="fas fa-search fa-2x"></i>
+                <br>
+                BUSCAR
+                <br>
+            </button>
 
         </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h5>Compras</h5>
+            <hr>
 
+
+            <button type="button" class="btn btn-outline-primary itemsbtn" style="width: 120px; height: 120px;" >
+                <i class="fas fa-plus fa-2x"></i>
+                <br>
+                NUEVA
+                <br>
+            </button>
+
+
+            <button type="button" class="btn btn-outline-primary itemsbtn" style="width: 120px; height: 120px;">
+                <i class="fas fa-search fa-2x"></i>
+                <br>
+                BUSCAR
+                <br>
+            </button>
+
+        </div>
     </div>
 </div>
