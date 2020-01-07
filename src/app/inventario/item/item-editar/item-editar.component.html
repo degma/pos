@@ -34,47 +34,31 @@
 
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="inputState">Categoria</label>
-                    <select id="inputState" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>...</option>
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria" class="form-control" formControlName="categoria">
+                        <option>Categoria 1</option>
+                        <option>Categoria 2</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="inputState">Fabricante</label>
-                    <select id="inputState" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>...</option>
+                    <label for="fabricante">Fabricante</label>
+                    <select id="fabricante" class="form-control" formControlName="fabricante">
+                        <option>Fabricante 1</option>
+                        <option>Fabricante 2</option>
                     </select>
                 </div>
 
             </div>
-
 
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="descripcion">Precio</label>
-                    <input type="text" id="descripcion" class="form-control" formControlName="descripcion">
-                    <span *ngIf="!itemForm.get('descripcion').valid && itemForm.get('descripcion').touched"
-                        class="help-block">Por favor ingrese un descripcion</span>
+                    <label for="precio">Precio</label>
+                    <input type="text" id="precio" class="form-control" formControlName="precio">
+                    <span *ngIf="!itemForm.get('precio').valid && itemForm.get('precio').touched"
+                        class="help-block">Por favor ingrese un precio</span>
                 </div>
             </div>
 
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="btn-group" data-toggle="buttons" aria-label="Basic example">
-                    <button type="button" class="btn btn-outline-primary">UNISEX</button>
-                    <button type="button" class="btn btn-outline-primary">UNISEX JUVENIL</button>
-                    <button type="button" class="btn btn-outline-primary">NENA</button>
-                    <button type="button" class="btn btn-outline-primary">VARON</button>
-                    <button type="button" class="btn btn-outline-primary">BEBE</button>
-                    <button type="button" class="btn btn-outline-primary">BEBA</button>
-                    <button type="button" class="btn btn-outline-primary">RECIEN NACIDO</button>
-                    <button type="button" class="btn btn-outline-primary">VARON JUVENIL</button>
-                    <button type="button" class="btn btn-outline-primary">NENA JUVENIL</button>
-                  </div>
-            </div>
         </div>
 
         <div class="row">

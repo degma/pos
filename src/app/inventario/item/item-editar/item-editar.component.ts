@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FirebaseService } from 'src/app/services/firebase/firebase.service';
+import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
+import { Item } from 'src/app/interfaces/item.interface';
 
 @Component({
   selector: 'app-item-editar',
@@ -10,19 +14,45 @@ export class ItemEditarComponent implements OnInit {
 
   itemForm: FormGroup;
 
-  constructor() { }
+  item: Item;
+
+  constructor(private firestoreService: FirebaseService) { }
 
   ngOnInit() {
 
     this.itemForm = new FormGroup({
-      'nombre': new FormControl(null, Validators.required),
-      'descripcion': new FormControl(null),
-      
+      nombre: new FormControl(null, Validators.required),
+      descripcion: new FormControl(null),
+      categoria: new FormControl(null),
+      fabricante: new FormControl(null),
+      precio: new FormControl(null)
     });
   }
 
-  onSubmit(){
-    console.log(this.itemForm.value)
-  }
+  onSubmit() {
 
+
+    if (!this.itemForm.valid) {
+
+      return;
+    }
+
+    Swal.fire({
+      title: 'Espere',
+      text: 'Guardando información',
+      icon: 'info',
+      allowOutsideClick: false
+    });
+    Swal.showLoading();
+
+    this.firestoreService.createItem(this.itemForm.value).then(() => {
+      Swal.fire({
+        title: 'OK',
+        text: 'Se actualizó correctamente',
+        icon: 'success'
+      });
+      this.itemForm.markAsPristine();
+      this.itemForm.reset();
+    });
+  }
 }

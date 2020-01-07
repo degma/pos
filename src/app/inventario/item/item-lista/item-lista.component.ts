@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from 'src/app/services/firebase/firebase.service';
+import Swal from 'sweetalert2';
+
+import { Observable } from 'rxjs';
+import { map, delay } from 'rxjs/operators';
+import { Item } from 'src/app/interfaces/item.interface';
 
 @Component({
   selector: 'app-item-lista',
@@ -7,9 +13,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemListaComponent implements OnInit {
 
-  constructor() { }
+  items: any[] = [];
+  loading = false;
+
+  constructor(private firestoreService: FirebaseService) { }
 
   ngOnInit() {
+    this.loading = true;
+    this.firestoreService.getItems().subscribe(resp => {
+      this.items = resp;
+      this.loading = false;
+    });
+
   }
 
 }
