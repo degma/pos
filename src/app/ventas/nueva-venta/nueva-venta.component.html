@@ -1,31 +1,37 @@
 <div class="container-fluid">
+
     <div class="row">
-        <div class="col-md-9">
 
-        </div>
-        <div class="col-md-3" style="border-left: 1px solid grey;">
-            <table class="table table-borderless table-sm w-100">
-                <tbody>
-                    <tr>
-                        <td>Subtotal</td>
-                        <td style="width: 100px;">$ 0.00</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid lightgrey;">
-                        <td>Descuentos</td>
-                        <td>$ 0.00</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="col-md-5">
+            <div class="row mt-3 mb-3">
+                <div class="col-md-12">
+                    
+                    <form class="p-0">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Promo code">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-secondary">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
 
-            <table class="table table-borderless table-sm w-100">
-                <tbody>
-                    <tr>
-                        <td>Total</td>
-                        <td style="width: 100px;">$ 0.00</td>
-                    </tr>                    
-                </tbody>
-            </table>
-            <button class="btn btn-primary w-100">Pago</button>
+                    <app-panel-items *ngFor="let item of items" [articulo]="item" (agregado)="onAgregar($event)"></app-panel-items>
+                </div>
+
+            </div>
         </div>
+
+        <div class="col-md-4">
+            <app-panel-carrito [carrito]="itemsCarrito" (borrado)="onEliminar($event)"></app-panel-carrito>
+        </div>
+
+        <div class="col-md-3">
+            <app-panel-total></app-panel-total>
+        </div>
+
     </div>
 </div>
