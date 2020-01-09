@@ -2,12 +2,12 @@
 
 
 
-    <ul class="list-group mb-3">
+    <ul class="list-group mb-3 p-0">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div class="card-body">
+            <div class="card-body p-0">
                 <h1 class="card-title pricing-card-title text-center">
                     <small class="text-muted">TOTAL</small>
-                    $ 560
+                    $ {{ subtotalVenta - descuentosVenta}}
                 </h1>
             </div>
 
@@ -15,11 +15,11 @@
         </li>
         <li class="list-group-item d-flex justify-content-between">
             <span>Subtotal</span>
-            <strong>$20</strong>
+        <strong>$ {{subtotalVenta}}</strong>
         </li>
         <li class="list-group-item d-flex justify-content-between">
             <span>Descuentos</span>
-            <strong>$20</strong>
+        <strong>$ {{descuentosVenta}}</strong>
         </li>
     </ul>
 

@@ -1,3 +1,4 @@
+import { Item } from './../../../interfaces/item.interface';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import Swal from 'sweetalert2';
 
@@ -9,7 +10,7 @@ import Swal from 'sweetalert2';
 export class PanelCarritoComponent implements OnInit {
 
   @Input() carrito: any[] = [];
-  @Output() borrado = new EventEmitter();
+  @Output() borrado = new EventEmitter<{articulo: Item, i: number}>();
 
   constructor() { }
 
@@ -17,16 +18,15 @@ export class PanelCarritoComponent implements OnInit {
 
 }
 
-eliminar(i: any) {
+eliminar(precio: number,  i: number) {
 
   Swal.fire({
     title: '¿Eliminar Artículo?',
-    icon: 'question',
     showConfirmButton: true,
     showCancelButton: true
   }).then(resp => {
     if (resp.value) {
-      this.borrado.emit(i);
+      this.borrado.emit({precio, i});
     }
   });
 

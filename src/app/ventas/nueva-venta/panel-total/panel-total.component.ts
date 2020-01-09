@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-panel-total',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./panel-total.component.css']
 })
 export class PanelTotalComponent implements OnInit {
+
+  @Input() subtotalVenta = 0 ;
+  @Input() descuentosVenta = 0 ;
 
   constructor() { }
 
