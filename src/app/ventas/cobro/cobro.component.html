@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h5 class="text-muted">Metodo de Pago</h5>
+        </div>
+        <div class="col-md-12">
+
+            <mat-button-toggle-group #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style"
+                (change)="onValChange(group.value)" formControlName="metodoPago">
+                <mat-button-toggle value="Efectivo">Efectivo</mat-button-toggle>
+                <mat-button-toggle value="Debito">Débito</mat-button-toggle>
+                <mat-button-toggle value="Credito">Crédito</mat-button-toggle>
+                <mat-button-toggle value="MercadoPago">Mercado Pago</mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <hr>
+
+            <div *ngIf="metodoPago === 'Efectivo'">
+
+                <div>
+                    <h1 class="pricing-card-title text-right">
+                        <small class="text-muted">Efectivo:</small>
+                        <input type="number" style="width: 200px; text-align: end;" placeholder="0">
+                    </h1>
+                </div>
+
+                <div >
+                    <h1 class="pricing-card-title text-right">
+                        <small class="text-muted">Total:</small>
+                        <input type="number" style="width: 200px;" disabled="disabled">
+                    </h1>
+                </div>
+
+                <div >
+                    <h1 class="pricing-card-title text-right">
+                        <small class="text-muted">Vuelto:</small>
+                        <input type="number" style="width: 200px;" disabled="disabled">
+
+                    </h1>
+                </div>            
+        </div>
+
+        <div *ngIf="metodoPago === 'Debito'">
+            Debito
+        </div>
+
+        <div *ngIf="metodoPago === 'Credito'">
+            Credito
+        </div>
+
+        <div *ngIf="metodoPago === 'MercadoPago'">
+            MP
+        </div>
+
+
+    </div>
+
+</div>
+<hr>
+<div class="row">
+
+    <div class="col-md-12 justify-content-between text-right">
+        <button class="btn btn-primary">Confirmar</button>
+
+    </div>
+</div>
+</div>

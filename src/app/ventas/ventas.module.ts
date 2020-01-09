@@ -8,12 +8,23 @@ import { PanelItemsComponent } from './nueva-venta/panel-items/panel-items.compo
 import { PanelCarritoComponent } from './nueva-venta/panel-carrito/panel-carrito.component';
 import { PanelTotalComponent } from './nueva-venta/panel-total/panel-total.component';
 
+import { CobroComponent } from './cobro/cobro.component';
+
+import { MatButtonModule, MatDialogModule, MatButtonToggleModule, MatStepperModule } from '@angular/material';
+
 
 @NgModule({
-  declarations: [VentasComponent, NuevaVentaComponent, PanelItemsComponent, PanelCarritoComponent, PanelTotalComponent],
+  declarations: [VentasComponent, NuevaVentaComponent, PanelItemsComponent, PanelCarritoComponent, PanelTotalComponent, CobroComponent],
   imports: [
     CommonModule,
-    VentasRoutingModule
-  ]
+    VentasRoutingModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatButtonToggleModule,
+    MatStepperModule
+  ],
+  entryComponents: [
+    CobroComponent
+  ],
 })
 export class VentasModule { }

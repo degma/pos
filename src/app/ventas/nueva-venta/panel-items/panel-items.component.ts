@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Input, Output } from "@angular/core";
 import Swal from "sweetalert2";
+import { SweetAlert2LoaderService } from '@sweetalert2/ngx-sweetalert2';
 
 @Component({
   selector: "app-panel-items",
@@ -7,11 +8,13 @@ import Swal from "sweetalert2";
   styleUrls: ["./panel-items.component.css"]
 })
 export class PanelItemsComponent implements OnInit {
-  constructor() {}
+
+  constructor() { }
+
   @Input() articulo: any;
   @Output() agregado = new EventEmitter();
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   agregar() {
     this.agregado.emit(this.articulo);

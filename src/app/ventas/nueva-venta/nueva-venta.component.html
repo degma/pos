@@ -5,7 +5,7 @@
         <div class="col-md-5">
             <div class="row mt-3 mb-3">
                 <div class="col-md-12">
-                    
+
                     <form class="p-0">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Promo code">
@@ -19,18 +19,29 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    <app-panel-items *ngFor="let item of items" [articulo]="item" (agregado)="onAgregar($event)"></app-panel-items>
+                    <app-panel-items *ngFor="let item of items" [articulo]="item" (agregado)="onAgregar($event)">
+                    </app-panel-items>
                 </div>
 
             </div>
         </div>
 
         <div class="col-md-4">
-            <app-panel-carrito [carrito]="itemsCarrito" (borrado)="onEliminar($event)"></app-panel-carrito>
+            <app-panel-carrito 
+                [carrito]="itemsCarrito" 
+                (borrado)="onEliminar($event)"
+                >
+            </app-panel-carrito>
         </div>
 
         <div class="col-md-3">
-            <app-panel-total [subtotalVenta]="subtotalVenta" [descuentosVenta]="descuentosVenta"></app-panel-total>
+            <app-panel-total 
+                [subtotalVenta]="subtotalVenta" 
+                [descuentosVenta]="descuentosVenta"
+                (pago)="cobrarDialog($event)" 
+                (cancelado)="cleanCarrito($event)"
+                >
+            </app-panel-total>
         </div>
 
     </div>

@@ -10,25 +10,25 @@ import Swal from 'sweetalert2';
 export class PanelCarritoComponent implements OnInit {
 
   @Input() carrito: any[] = [];
-  @Output() borrado = new EventEmitter<{articulo: Item, i: number}>();
+  @Output() borrado = new EventEmitter<{ articulo: object, i: number }>();
 
   constructor() { }
 
   ngOnInit() {
 
-}
+  }
 
-eliminar(precio: number,  i: number) {
+  eliminar(articulo: object, i: number) {
 
-  Swal.fire({
-    title: '¿Eliminar Artículo?',
-    showConfirmButton: true,
-    showCancelButton: true
-  }).then(resp => {
-    if (resp.value) {
-      this.borrado.emit({precio, i});
-    }
-  });
+    Swal.fire({
+      title: '¿Eliminar Artículo?',
+      showConfirmButton: true,
+      showCancelButton: true
+    }).then(resp => {
+      if (resp.value) {
+        this.borrado.emit({ articulo, i });
+      }
+    });
 
-}
+  }
 }
