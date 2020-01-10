@@ -11,6 +11,7 @@ import { PanelTotalComponent } from './nueva-venta/panel-total/panel-total.compo
 import { CobroComponent } from './cobro/cobro.component';
 
 import { MatButtonModule, MatDialogModule, MatButtonToggleModule, MatStepperModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { MatButtonModule, MatDialogModule, MatButtonToggleModule, MatStepperModu
     MatButtonModule,
     MatDialogModule,
     MatButtonToggleModule,
+    ReactiveFormsModule,
     MatStepperModule
   ],
   entryComponents: [

@@ -1,67 +1,118 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h5 class="text-muted">Metodo de Pago</h5>
+    <form [formGroup]="ventaForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-12">
+                Metodo de Pago
+                <mat-button-toggle-group #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style"
+                    (change)="onValChange(group.value)" formControlName="metodoPago">
+                    <mat-button-toggle value="Efectivo">Efectivo</mat-button-toggle>
+                    <mat-button-toggle value="Debito">Débito</mat-button-toggle>
+                    <mat-button-toggle value="Credito">Crédito</mat-button-toggle>
+                    <mat-button-toggle value="MercadoPago">Mercado Pago</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
         </div>
-        <div class="col-md-12">
+        <hr>
 
-            <mat-button-toggle-group #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style"
-                (change)="onValChange(group.value)" formControlName="metodoPago">
-                <mat-button-toggle value="Efectivo">Efectivo</mat-button-toggle>
-                <mat-button-toggle value="Debito">Débito</mat-button-toggle>
-                <mat-button-toggle value="Credito">Crédito</mat-button-toggle>
-                <mat-button-toggle value="MercadoPago">Mercado Pago</mat-button-toggle>
-            </mat-button-toggle-group>
+        <div class="row" style="height: 20rem; width: 50rem;">
 
-            <hr>
-
-            <div *ngIf="metodoPago === 'Efectivo'">
-
+            <div class="col-md-7">
                 <div>
-                    <h1 class="pricing-card-title text-right">
-                        <small class="text-muted">Efectivo:</small>
-                        <input type="number" style="width: 200px; text-align: end;" placeholder="0">
-                    </h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h1 class="card-title pricing-card-title text-muted text-uppercase">
+                                <small>{{metodoPago}}</small>
+                            </h1>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="input-group input-group-lg mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Monto" formControlName="montoPago">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h1 class="card-title pricing-card-title text-muted">
+                                <small>CAMBIO</small>
+                            </h1>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="input-group input-group-lg mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                                    formControlName="cambioPago">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" *ngIf="metodoPago === 'Credito'">
+                        <div class="col-md-5">
+                            <h1 class="card-title pricing-card-title text-muted">
+                                <small>CUOTAS</small>
+                            </h1>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="input-group input-group-lg mb-3">
+                                <select class="custom-select custom-select-lg mb-3" formControlName="cantCuotas">
+                                    <option value="1">1 x $ {{totalVenta}}</option>
+                                    <option value="2">2 x $ {{totalVenta / 2}}</option>
+                                    <option value="3">3 x $ {{totalVenta / 3}}</option>
+                                    <option value="4">4 x $ {{totalVenta / 4}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div >
-                    <h1 class="pricing-card-title text-right">
-                        <small class="text-muted">Total:</small>
-                        <input type="number" style="width: 200px;" disabled="disabled">
-                    </h1>
-                </div>
 
-                <div >
-                    <h1 class="pricing-card-title text-right">
-                        <small class="text-muted">Vuelto:</small>
-                        <input type="number" style="width: 200px;" disabled="disabled">
+            </div>
+            <div class="col-md-5">
 
-                    </h1>
-                </div>            
+                <ul class="list-group mb-3 p-0" style="height: 5rem;">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div class="card-body p-0">
+                            <h1 class="card-title pricing-card-title text-center">
+                                <small class="text-muted">TOTAL</small>
+                                $ {{totalVenta}}
+                            </h1>
+
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div class="card-body p-0">
+                            <ul class="p-0" style="list-style-type:none;">
+                                <li *ngFor="let articulo of articulos" class="d-flex justify-content-between">
+
+                                    <span>{{articulo.nombre}}</span>
+                                    <span>$ {{articulo.precio}}</span>
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+
         </div>
 
-        <div *ngIf="metodoPago === 'Debito'">
-            Debito
+        <hr>
+
+        <div class="row">
+
+            <div class="col-md-12 justify-content-between text-right">
+                <button class="btn btn-primary" type="submit">Confirmar</button>
+
+            </div>
         </div>
-
-        <div *ngIf="metodoPago === 'Credito'">
-            Credito
-        </div>
-
-        <div *ngIf="metodoPago === 'MercadoPago'">
-            MP
-        </div>
-
-
-    </div>
-
-</div>
-<hr>
-<div class="row">
-
-    <div class="col-md-12 justify-content-between text-right">
-        <button class="btn btn-primary">Confirmar</button>
-
-    </div>
-</div>
+    </form>
 </div>

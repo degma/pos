@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CobroComponent } from '../cobro/cobro.component';
 import Swal from 'sweetalert2';
 
@@ -15,6 +15,7 @@ export class NuevaVentaComponent implements OnInit {
   subtotalVenta = 0;
   descuentosVenta = 0;
   metodoPago = '';
+  totalVenta = 0;
 
   constructor(private firebaseService: FirebaseService, public dialog: MatDialog) { }
 
@@ -47,12 +48,21 @@ export class NuevaVentaComponent implements OnInit {
         this.subtotalVenta = 0;
         this.metodoPago = '';
       }
-    })
+    });
   }
 
 
   cobrarDialog() {
-    const dialogRef = this.dialog.open(CobroComponent);
+
+    this.totalVenta = this.subtotalVenta - this.descuentosVenta;
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      total: this.totalVenta,
+      articulos: this.itemsCarrito
+    };
+
+    const dialogRef = this.dialog.open(CobroComponent, dialogConfig);
 
   }
 
