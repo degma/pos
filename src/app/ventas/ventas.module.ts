@@ -9,24 +9,34 @@ import { PanelCarritoComponent } from './nueva-venta/panel-carrito/panel-carrito
 import { PanelTotalComponent } from './nueva-venta/panel-total/panel-total.component';
 
 import { CobroComponent } from './cobro/cobro.component';
+import { ItemPropDialogComponent } from './nueva-venta/panel-items/item-prop-dialog/item-prop-dialog.component';
 
-import { MatButtonModule, MatDialogModule, MatButtonToggleModule, MatStepperModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatButtonToggleModule, MatStepperModule, MatSlideToggleModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [VentasComponent, NuevaVentaComponent, PanelItemsComponent, PanelCarritoComponent, PanelTotalComponent, CobroComponent],
+  declarations: [
+    VentasComponent,
+    NuevaVentaComponent,
+    PanelItemsComponent,
+    PanelCarritoComponent,
+    PanelTotalComponent,
+    CobroComponent,
+    ItemPropDialogComponent],
   imports: [
     CommonModule,
     VentasRoutingModule,
     MatButtonModule,
     MatDialogModule,
     MatButtonToggleModule,
+    MatSlideToggleModule,
     ReactiveFormsModule,
     MatStepperModule
   ],
   entryComponents: [
-    CobroComponent
+    CobroComponent,
+    ItemPropDialogComponent
   ],
 })
 export class VentasModule { }

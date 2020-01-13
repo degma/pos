@@ -7,10 +7,8 @@
 
     </div>
     <div class="row mt-5">
-        <div class="col-md-1 text-left">
+        <div class="col-md-12 text-left">
             NUEVO
-        </div>
-        <div class="col-md-11">
             <hr>
         </div>
     </div>
@@ -34,6 +32,13 @@
 
             <div class="col-md-4">
                 <div class="form-group">
+                    <label for="fabricante">Fabricante</label>
+                    <select id="fabricante" class="form-control" formControlName="fabricante">
+                        <option>Fabricante 1</option>
+                        <option>Fabricante 2</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="categoria">Categoria</label>
                     <select id="categoria" class="form-control" formControlName="categoria">
                         <option>Categoria 1</option>
@@ -41,21 +46,20 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="fabricante">Fabricante</label>
-                    <select id="fabricante" class="form-control" formControlName="fabricante">
-                        <option>Fabricante 1</option>
-                        <option>Fabricante 2</option>
+                    <label for="genero">Genero</label>
+                    <select id="genero" class="form-control" formControlName="genero">
+                        <option>Genero 1</option>
+                        <option>Genero 2</option>
                     </select>
                 </div>
-
             </div>
 
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="precio">Precio</label>
                     <input type="text" id="precio" class="form-control" formControlName="precio">
-                    <span *ngIf="!itemForm.get('precio').valid && itemForm.get('precio').touched"
-                        class="help-block">Por favor ingrese un precio</span>
+                    <span *ngIf="!itemForm.get('precio').valid && itemForm.get('precio').touched" class="help-block">Por
+                        favor ingrese un precio</span>
                 </div>
             </div>
 
@@ -67,12 +71,5 @@
             </div>
         </div>
     </form>
-
-    <div class="row">
-        <div class="col-md-12">
-            <h6>Inventario</h6>
-            <hr>
-        </div>
-    </div>
 
 </div>

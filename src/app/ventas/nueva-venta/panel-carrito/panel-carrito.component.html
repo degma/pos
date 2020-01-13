@@ -10,13 +10,17 @@
             *ngFor="let articulo of carrito, let i = index">
             <div>
                 <h6 class="my-0">{{articulo.nombre}}</h6>
-                <small class="text-muted">Talle: 16 | Color: Rojo</small>
+                <small class="text-muted">Talle: {{articulo.talle}} | Color: {{articulo.color}}</small>
             </div>
             <div>
                 <span class="text-muted">${{articulo.precio}}</span>
                 <button class="btn" (click)="eliminar( articulo , i )">
                     <i class="far fa-window-close fa-2x" style="color:red;"></i>
                 </button>
+                <span>
+                    <mat-slide-toggle class="example-margin" [color]="color" [checked]="checked" [disabled]="disabled" (click)="onToggleDev(articulo, i)">
+                    </mat-slide-toggle>                    
+                </span>
 
             </div>
         </li>

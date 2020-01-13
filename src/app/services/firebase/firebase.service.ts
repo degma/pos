@@ -14,6 +14,10 @@ export class FirebaseService {
     return this.firestore.collection('items').add(data);
   }
 
+  createVenta(data: any) {
+    return this.firestore.collection('ventas').add(data);
+  }
+
   getItems() {
     return this.firestore.collection('items').snapshotChanges().pipe(map(c => {
       return c.map((a: any) => {

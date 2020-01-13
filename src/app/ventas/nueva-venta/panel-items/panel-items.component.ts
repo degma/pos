@@ -1,15 +1,15 @@
-import { Component, EventEmitter, OnInit, Input, Output } from "@angular/core";
-import Swal from "sweetalert2";
-import { SweetAlert2LoaderService } from '@sweetalert2/ngx-sweetalert2';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { MatDialog, MatDialogConfig, MatSlideToggle } from '@angular/material';
+import { ItemPropDialogComponent } from './item-prop-dialog/item-prop-dialog.component';
 
 @Component({
-  selector: "app-panel-items",
-  templateUrl: "./panel-items.component.html",
-  styleUrls: ["./panel-items.component.css"]
+  selector: 'app-panel-items',
+  templateUrl: './panel-items.component.html',
+  styleUrls: ['./panel-items.component.css']
 })
 export class PanelItemsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   @Input() articulo: any;
   @Output() agregado = new EventEmitter();
@@ -17,6 +17,17 @@ export class PanelItemsComponent implements OnInit {
   ngOnInit() { }
 
   agregar() {
-    this.agregado.emit(this.articulo);
+    const itemCarrito = this.articulo;
+    const dialogConfig = new MatDialogConfig();
+    const dialogRef = this.dialog.open(ItemPropDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+        itemCarrito.talle = data.talle;
+        itemCarrito.color = data.color;
+        this.agregado.emit(itemCarrito);
+      }
+    );
+
   }
 }

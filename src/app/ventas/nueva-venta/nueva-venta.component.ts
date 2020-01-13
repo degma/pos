@@ -31,8 +31,15 @@ export class NuevaVentaComponent implements OnInit {
   }
 
   onAgregar(articulo: any) {
-    this.itemsCarrito.push(articulo);
+    // para romper la referencia con el objeto original
+    this.itemsCarrito.push(JSON.parse(JSON.stringify(articulo)));
     this.subtotalVenta += +parseInt(articulo.precio, 10);
+  }
+
+  onToggleDev({ articulo, i }) {
+    this.itemsCarrito[i].precio = articulo.precio * -1;
+    this.subtotalVenta += +parseInt(articulo.precio, 10) * 2;
+
   }
 
   cleanCarrito() {

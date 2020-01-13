@@ -24,6 +24,7 @@ export class ItemEditarComponent implements OnInit {
       nombre: new FormControl(null, Validators.required),
       descripcion: new FormControl(null),
       categoria: new FormControl(null),
+      genero: new FormControl(null),
       fabricante: new FormControl(null),
       precio: new FormControl(0)
     });
