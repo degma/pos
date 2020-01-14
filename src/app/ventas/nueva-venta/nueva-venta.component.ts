@@ -23,6 +23,10 @@ export class NuevaVentaComponent implements OnInit {
     this.firebaseService.getItems().subscribe(resp => {
       this.items = resp;
     });
+
+    this.firebaseService.filterItems('remera').subscribe(resp => {
+      console.log(resp);
+    });
   }
 
   onEliminar({ articulo, i }) {

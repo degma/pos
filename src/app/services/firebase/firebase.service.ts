@@ -18,6 +18,11 @@ export class FirebaseService {
     return this.firestore.collection('ventas').add(data);
   }
 
+  filterItems(searchterm: string) {
+    return this.firestore.collection('items', ref => ref.where('nombre', '>', 'Producto').limit(1)).snapshotChanges();
+  }
+
+
   getItems() {
     return this.firestore.collection('items').snapshotChanges().pipe(map(c => {
       return c.map((a: any) => {

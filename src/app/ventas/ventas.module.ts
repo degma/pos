@@ -11,8 +11,16 @@ import { PanelTotalComponent } from './nueva-venta/panel-total/panel-total.compo
 import { CobroComponent } from './cobro/cobro.component';
 import { ItemPropDialogComponent } from './nueva-venta/panel-items/item-prop-dialog/item-prop-dialog.component';
 
-import { MatButtonModule, MatDialogModule, MatButtonToggleModule, MatStepperModule, MatSlideToggleModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatDialogModule,
+  MatButtonToggleModule,
+  MatStepperModule,
+  MatSlideToggleModule,
+  MatSelectModule
+} from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BuscadorComponent } from './nueva-venta/panel-items/buscador/buscador.component';
 
 
 @NgModule({
@@ -23,7 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PanelCarritoComponent,
     PanelTotalComponent,
     CobroComponent,
-    ItemPropDialogComponent],
+    ItemPropDialogComponent,
+    BuscadorComponent],
   imports: [
     CommonModule,
     VentasRoutingModule,
@@ -32,7 +41,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonToggleModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
-    MatStepperModule
+    MatStepperModule,
+    MatSelectModule
   ],
   entryComponents: [
     CobroComponent,
