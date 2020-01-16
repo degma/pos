@@ -1,8 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import Swal from 'sweetalert2';
+
+
 
 
 @Component({
@@ -52,7 +54,8 @@ export class CobroComponent implements OnInit {
     this.ventaForm.controls.cambioPago.setValue(value - this.totalVenta);
   }
 
-  onSubmit() {
+  onSubmit() {    
+    
     this.ventaForm.controls.articulos.setValue(this.articulos);
     this.firebaseService.createVenta(this.ventaForm.value).then(resp => {
       Swal.fire({
@@ -66,7 +69,7 @@ export class CobroComponent implements OnInit {
         text: resp,
         icon: 'error'
       });
-    });    
+    });
     console.warn(this.ventaForm.value);
   }
 

@@ -26,9 +26,14 @@ export class ItemEditarComponent implements OnInit {
       categoria: new FormControl(null),
       genero: new FormControl(null),
       fabricante: new FormControl(null),
-      precio: new FormControl(0)
+      precio: new FormControl(0),
+      keywords: new FormControl(null)
     });
   }
+
+  string_to_array(str) {
+    return str.toLowerCase().trim().split(' ');
+  };
 
   onSubmit() {
 
@@ -37,6 +42,9 @@ export class ItemEditarComponent implements OnInit {
 
       return;
     }
+
+    const kw = this.string_to_array(this.itemForm.value.nombre);
+    this.itemForm.controls.keywords.setValue(kw);
 
     Swal.fire({
       title: 'Espere',

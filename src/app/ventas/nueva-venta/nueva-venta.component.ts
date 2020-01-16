@@ -3,6 +3,7 @@ import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CobroComponent } from '../cobro/cobro.component';
 import Swal from 'sweetalert2';
+import { Item } from 'src/app/interfaces/item.interface';
 
 @Component({
   selector: 'app-nueva-venta',
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./nueva-venta.component.css']
 })
 export class NuevaVentaComponent implements OnInit {
-  items: any[] = [];
+  items: Item[];
   itemsCarrito: any[] = [];
   subtotalVenta = 0;
   descuentosVenta = 0;
@@ -20,13 +21,9 @@ export class NuevaVentaComponent implements OnInit {
   constructor(private firebaseService: FirebaseService, public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.firebaseService.getItems().subscribe(resp => {
-      this.items = resp;
-    });
 
-    this.firebaseService.filterItems('remera').subscribe(resp => {
-      console.log(resp);
-    });
+    this.firebaseService.items$.subscribe(resp => { console.log(resp); this.items = resp; });
+
   }
 
   onEliminar({ articulo, i }) {

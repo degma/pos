@@ -1,0 +1,28 @@
+<h1 class="card-title pricing-card-title text-center">
+    <small class="text-muted">
+        <fa name="cash-register"></fa>
+        ABRIR CAJA
+    </small>16/01/2020
+</h1>
+<hr>
+<div>
+    <form [formGroup]="aperturaForm" (ngSubmit)="onAbrirCaja()">
+        <div class="example-container">
+            <mat-form-field>
+                <input matInput placeholder="Importe inicial" type="number" class="example-right-align"
+                    formControlName="importe">
+                <span matPrefix>$&nbsp;</span>
+                <span matSuffix>.00</span>
+            </mat-form-field>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary" type="submit">
+                    <fa name="save"></fa>
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

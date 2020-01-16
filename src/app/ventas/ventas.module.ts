@@ -8,6 +8,7 @@ import { PanelItemsComponent } from './nueva-venta/panel-items/panel-items.compo
 import { PanelCarritoComponent } from './nueva-venta/panel-carrito/panel-carrito.component';
 import { PanelTotalComponent } from './nueva-venta/panel-total/panel-total.component';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CobroComponent } from './cobro/cobro.component';
 import { ItemPropDialogComponent } from './nueva-venta/panel-items/item-prop-dialog/item-prop-dialog.component';
 
@@ -17,10 +18,12 @@ import {
   MatButtonToggleModule,
   MatStepperModule,
   MatSlideToggleModule,
-  MatSelectModule
+  MatSelectModule,
+  MatInputModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BuscadorComponent } from './nueva-venta/panel-items/buscador/buscador.component';
+import { AperturaComponent } from './caja/apertura/apertura.component';
 
 
 @NgModule({
@@ -32,17 +35,21 @@ import { BuscadorComponent } from './nueva-venta/panel-items/buscador/buscador.c
     PanelTotalComponent,
     CobroComponent,
     ItemPropDialogComponent,
-    BuscadorComponent],
+    BuscadorComponent,
+    AperturaComponent],
   imports: [
     CommonModule,
     VentasRoutingModule,
     MatButtonModule,
     MatDialogModule,
     MatButtonToggleModule,
+    MatButtonModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
     MatStepperModule,
-    MatSelectModule
+    MatSelectModule,
+    MatInputModule,
+    AngularFontAwesomeModule
   ],
   entryComponents: [
     CobroComponent,

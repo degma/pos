@@ -6,15 +6,22 @@
 
 
             <button type="button" class="btn btn-outline-primary itemsbtn" style="width: 120px; height: 120px;" [routerLink]="'/ventas/nueva'">
-                <i class="fas fa-plus fa-2x"></i>
+                <fa name="plus" size="2x"></fa>
                 <br>
                 <small>NUEVA VENTA</small>
                 <br>
             </button>
 
+            <button type="button" (click)="onAbrirCaja()" class="btn btn-outline-primary itemsbtn" style="width: 120px; height: 120px;" >
+                <fa name="cash-register" size="2x"></fa>
+                <br>
+                <small>ABRIR CAJA</small>
+                <br>
+            </button>
+
 
             <button type="button" class="btn btn-outline-primary itemsbtn" style="width: 120px; height: 120px;" [routerLink]="'/ventas/buscar'">
-                <i class="fas fa-power-off fa-2x"></i>
+                <fa name="power-off" size="2x"></fa>
                 <br>
                 <small>CERRAR CAJA</small>
                 <br>
