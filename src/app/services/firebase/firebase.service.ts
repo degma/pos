@@ -71,15 +71,21 @@ export class FirebaseService {
 
   createVenta(data: any) {
 
+
+
     return this.afs.collection('diario').doc(this.fechaCaja).collection('ventas').add(data).then(resp => {
-
+      this.afs.collection('diario').doc(this.fechaCaja)
+        .set({
+          cantidadVentas: firebase.firestore.FieldValue.increment(1),
+          totalVentas: firebase.firestore.FieldValue.increment(data.montoPago),
+          cantidadArticulos: firebase.firestore.FieldValue.increment(data.articulos.length),
+        },
+          { merge: true });
       data.articulos.map((art) => {
-        
         this.afs.collection('items').doc(art.id).set({ vendidos: firebase.firestore.FieldValue.increment(1) }, { merge: true });
-
         this.afs.collection('items').doc(art.id)
-          .collection('inventario').doc(art.talle + "_" + art.color)
-          .set({ vendidos: firebase.firestore.FieldValue.increment(1) }, { merge: true });
+          .collection('inventario').doc(art.talle + '_' + art.color)
+          .set({ talle: art.talle, color: art.color, vendidos: firebase.firestore.FieldValue.increment(1) }, { merge: true });
       });
     });
   }
@@ -99,7 +105,7 @@ export class FirebaseService {
 
   checkApertura() {
 
-    return this.afs.collection('diario').doc(this.fechaCaja).get()
+    return this.afs.collection('diario').doc(this.fechaCaja).get();
   }
 
   addApertura(importe: number) {
@@ -114,7 +120,7 @@ export class FirebaseService {
   }
 
   getApertura() {
-    return this.afs.collection('diario').doc(this.fechaCaja).get();
+    return this.afs.collection('diario').doc(this.fechaCaja).valueChanges();
   }
 
   // Otros

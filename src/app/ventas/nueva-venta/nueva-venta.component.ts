@@ -62,6 +62,13 @@ export class NuevaVentaComponent implements OnInit {
 
   cobrarDialog() {
 
+    if(this.itemsCarrito.length === 0){
+      return Swal.fire({
+        title: 'No se agegaron Items al carrito',        
+        icon: 'info'
+      });
+    }
+
     this.totalVenta = this.subtotalVenta - this.descuentosVenta;
     const dialogConfig = new MatDialogConfig();
 
