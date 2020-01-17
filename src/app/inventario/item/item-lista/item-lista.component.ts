@@ -18,12 +18,7 @@ export class ItemListaComponent implements OnInit {
 
   constructor(private firestoreService: FirebaseService) { }
 
-  ngOnInit() {
-    this.loading = true;
-    this.firestoreService.getItems().subscribe(resp => {
-      this.items = resp;
-      this.loading = false;
-    });
+  ngOnInit() {    
 
   }
 

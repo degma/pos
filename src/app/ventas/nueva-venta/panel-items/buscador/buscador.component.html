@@ -1,54 +1,62 @@
-<div class="row mt-3 mb-2">
-    <div class="col-md-12">
-        <div class="input-group">
-            <input type="text" (keyup)="selNombre()" class="form-control" placeholder="Nombre del Item">
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-secondary">Buscar</button>
+<div>
+    <form [formGroup]="searchForm" (ngSubmit)="clearFilter()">
+        <div class="row mt-3 mb-2">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <input type="text" (keyup)="selNombre($event.target.value)" class="form-control"
+                        placeholder="Buscar por nombre del item..." formControlName="inputNombre">
+                    <button class="btn btn-danger ml-2" type="submit">
+                        <fa name="filter"></fa>
+                    </button>
+                    <button class="btn btn-success ml-2" type="submit">
+                            <fa name="plus"></fa>
+                        </button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="row mr-2">
-    <div class="col-md-4">
-        <mat-form-field>
-            <mat-label>Fabricante</mat-label>
-            <mat-select (selectionChange)="selFabricante($event.value)">
-                <mat-option>Ninguno</mat-option>
-                <mat-option value="Fabricante 1">
-                    Fabricante 1
-                </mat-option>
-                <mat-option value="Fabricante 2">
-                    Fabricante 2
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <div class="col-md-4">
-        <mat-form-field>
-            <mat-label>Categoria</mat-label>
-            <mat-select (selectionChange)="selCategoria($event.value)">
-                <mat-option>Ninguno</mat-option>
-                <mat-option value="Categoria 1">
-                    Categoria 1
-                </mat-option>
-                <mat-option value="Categoria 2">
-                    Categoria 2
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <div class="col-md-4">
-        <mat-form-field>
-            <mat-label>Genero</mat-label>
-            <mat-select (selectionChange)="selGenero($event.value)">
-                <mat-option>Ninguno</mat-option>
-                <mat-option value="Genero 1">
-                    Genero 1
-                </mat-option>
-                <mat-option value="Genero 2">
-                    Genero 2
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
+        <div class="row mr-2">
+            <div class="col-md-4">
+                <mat-form-field>
+                    <mat-label>Fabricante</mat-label>
+                    <mat-select (selectionChange)="selFabricante($event.value)" formControlName="selectFabricante">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option value="Fabricante 1">
+                            Fabricante 1
+                        </mat-option>
+                        <mat-option value="Fabricante 2">
+                            Fabricante 2
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field>
+                    <mat-label>Categoria</mat-label>
+                    <mat-select (selectionChange)="selCategoria($event.value)" formControlName="selectCategoria">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option value="Categoria 1">
+                            Categoria 1
+                        </mat-option>
+                        <mat-option value="Categoria 2">
+                            Categoria 2
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field>
+                    <mat-label>Genero</mat-label>
+                    <mat-select (selectionChange)="selGenero($event.value)" formControlName="selectGenero">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option value="Genero 1">
+                            Genero 1
+                        </mat-option>
+                        <mat-option value="Genero 2">
+                            Genero 2
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
 </div>

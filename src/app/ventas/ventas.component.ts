@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase/firebase.service';
-import { fstat } from 'fs';
+
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { AperturaComponent } from './caja/apertura/apertura.component';
-import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-ventas',
