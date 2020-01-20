@@ -17,13 +17,14 @@ export class NuevaVentaComponent implements OnInit {
   descuentosVenta = 0;
   metodoPago = '';
   totalVenta = 0;
+  loading = true;
 
 
   constructor(private firebaseService: FirebaseService, public dialog: MatDialog) { }
 
   ngOnInit() {
 
-    this.firebaseService.items$.subscribe(resp => { console.log(resp); this.items = resp; });
+    this.firebaseService.items$.subscribe(resp => { this.items = resp; this.loading = false; });
 
   }
 
@@ -87,8 +88,8 @@ export class NuevaVentaComponent implements OnInit {
 
     const dialogRef = this.dialog.open(CobroComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe( resp => {
-      if(resp.venta){
+    dialogRef.afterClosed().subscribe(resp => {
+      if (resp.venta) {
         this.cleanCarritoAfterClose();
       }
     });

@@ -143,4 +143,20 @@ export class FirebaseService {
 
   }
 
+  addValor(tipo, name) {
+
+  }
+
+  //VENTAS
+
+  getVentaDia( dia: string){
+    return this.afs.collection('diario').doc(dia).collection('ventas').snapshotChanges().pipe(map(c => {
+      return c.map((a: any) => {
+        const data = a.payload.doc.data() as Item;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+  }
+
 }

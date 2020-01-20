@@ -1,9 +1,10 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
 <div class="container-fluid">
     <div class="alert alert-success mt-2" role="alert" *ngIf="alert">
         Caja abierta <strong>hoy</strong> a las {{ apertura.fecha | date:'shortTime'}} con un saldo inicial de
         <strong>${{ apertura.importeInicial }}</strong>
     </div>
-    <div class="row mt-2">
+    <div class="row mt-2" *ngIf="!loading">
         <div class="col-md-12">
             <h5>Ventas</h5>
             <hr>

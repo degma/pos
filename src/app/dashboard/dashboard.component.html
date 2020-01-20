@@ -1,6 +1,5 @@
-<div class="jumbotron jumbotron-fluid pt-1">
-
-
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+<div class="jumbotron jumbotron-fluid pt-1" *ngIf="!loading">
     <div class="container">
 
         <h1 class="display-4" style="font-size: 2rem;">

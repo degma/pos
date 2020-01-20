@@ -14,6 +14,7 @@ export class VentasComponent implements OnInit {
 
   importeApertura: number;
   alert = false;
+  loading = true;
   apertura = { fecha: Date, importeInicial: 0 };
 
   constructor(private fs: FirebaseService, public dialog: MatDialog) { }
@@ -25,6 +26,7 @@ export class VentasComponent implements OnInit {
         this.apertura.fecha = resp.timeStamp.toDate();
         this.apertura.importeInicial = resp.importeInicial.toFixed(2);
         this.alert = true;
+        this.loading = false;
       }
     });
   }

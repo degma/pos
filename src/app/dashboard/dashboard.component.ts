@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   fechaCaja: Date;
   importeApertura: number;
   totalVentas: number;
+  loading = true;
 
   constructor(private fs: FirebaseService) { }
 
@@ -22,7 +23,8 @@ export class DashboardComponent implements OnInit {
       this.cantidadVentas = resp.cantidadVentas;
       this.fechaCaja = resp.timeStamp.toDate();
       this.totalVentas = resp.totalVentas;
-    })
+      this.loading = false;
+    });
   }
 
 }

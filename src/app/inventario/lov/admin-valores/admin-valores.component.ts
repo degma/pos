@@ -24,4 +24,6 @@ export class AdminValoresComponent implements OnInit {
     });
   }
 
+  
+
 }
