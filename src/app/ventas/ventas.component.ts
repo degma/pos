@@ -13,12 +13,20 @@ import { AperturaComponent } from './caja/apertura/apertura.component';
 export class VentasComponent implements OnInit {
 
   importeApertura: number;
+  alert = false;
+  apertura = { fecha: Date, importeInicial: 0 };
 
   constructor(private fs: FirebaseService, public dialog: MatDialog) { }
 
 
   ngOnInit() {
-
+    this.fs.checkApertura().subscribe((resp: any) => {
+      if (resp) {
+        this.apertura.fecha = resp.timeStamp.toDate();
+        this.apertura.importeInicial = resp.importeInicial.toFixed(2);
+        this.alert = true;
+      }
+    });
   }
 
   onAbrirCaja() {
@@ -28,10 +36,9 @@ export class VentasComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       data => {
-        this.fs.addApertura(data.importe).then(resp => alert(resp))
+        this.fs.addApertura(data.importe).then(resp => alert(resp));
       }
-    )
-
+    );
 
   }
 

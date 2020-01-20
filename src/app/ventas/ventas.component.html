@@ -1,18 +1,22 @@
 <div class="container-fluid">
-    <div class="row mt-5">
+    <div class="alert alert-success mt-2" role="alert" *ngIf="alert">
+        Caja abierta <strong>hoy</strong> a las {{ apertura.fecha | date:'shortTime'}} con un saldo inicial de
+        <strong>${{ apertura.importeInicial }}</strong>
+    </div>
+    <div class="row mt-2">
         <div class="col-md-12">
             <h5>Ventas</h5>
             <hr>
-
-
-            <button type="button" class="btn btn-outline-primary itemsbtn" style="width: 120px; height: 120px;" [routerLink]="'/ventas/nueva'">
+            <button type="button" class="btn btn-outline-primary itemsbtn" style="width: 120px; height: 120px;"
+                [routerLink]="'/ventas/nueva'">
                 <fa name="plus" size="2x"></fa>
                 <br>
                 <small>NUEVA VENTA</small>
                 <br>
             </button>
 
-            <button type="button" (click)="onAbrirCaja()" class="btn btn-outline-primary itemsbtn" style="width: 120px; height: 120px;" >
+            <button type="button" (click)="onAbrirCaja()" class="btn btn-outline-primary itemsbtn"
+                style="width: 120px; height: 120px;" *ngIf="!alert">
                 <fa name="cash-register" size="2x"></fa>
                 <br>
                 <small>ABRIR CAJA</small>
@@ -20,7 +24,8 @@
             </button>
 
 
-            <button type="button" class="btn btn-outline-primary itemsbtn" style="width: 120px; height: 120px;" [routerLink]="'/ventas/buscar'">
+            <button type="button" class="btn btn-outline-primary itemsbtn" style="width: 120px; height: 120px;"
+                [routerLink]="'/ventas/buscar'">
                 <fa name="power-off" size="2x"></fa>
                 <br>
                 <small>CERRAR CAJA</small>
@@ -29,5 +34,5 @@
 
         </div>
     </div>
-    
+
 </div>

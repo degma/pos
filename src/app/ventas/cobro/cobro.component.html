@@ -29,7 +29,8 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="number" class="form-control" aria-label="Monto" formControlName="montoPago" (input)="onChangeEfectivo($event.target.value)">
+                                <input type="number" class="form-control" aria-label="Monto" formControlName="montoPago"
+                                    (input)="onChangeEfectivo($event.target.value)">
                             </div>
                         </div>
                     </div>
@@ -46,7 +47,7 @@
                                     <span class="input-group-text">$</span>
                                 </div>
                                 <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                    formControlName="cambioPago" >
+                                    formControlName="cambioPago">
                             </div>
                         </div>
                     </div>
@@ -62,8 +63,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label=""
-                                    formControlName="recargoCuotas">
+                                <input type="text" class="form-control" aria-label="" formControlName="recargoCuotas">
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -121,20 +121,22 @@
 
         <hr>
 
-        <div class="row">            
-            <div class="col-md-3"></div>
-            <div class="col-md-7">
+        <div class="row">
+            <div class="col-md-8">
                 <div class="input-group input-group-lg mb-3">
                     <h1 class="card-title pricing-card-title text-muted">
                         <small>Comprobante Nro: </small>
                     </h1>
-                    <input type="number" class="form-control ml-2" aria-label="Número de comprobante" formControlName="nroComprobante">
+                    <input type="number" class="form-control ml-2" aria-label="Número de comprobante"
+                        formControlName="nroComprobante">
                 </div>
             </div>
 
             <div class="col-md-2 justify-content-between text-right">
                 <button class="btn btn-primary" type="submit">Confirmar</button>
-
+            </div>
+            <div class="col-md-2 justify-content-between text-right">
+                <button class="btn btn-secondary" type="button" (click)="onCancelar()">Cancelar</button>
             </div>
         </div>
     </form>

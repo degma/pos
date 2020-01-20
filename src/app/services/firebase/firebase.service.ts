@@ -10,6 +10,7 @@ import * as firebase from 'firebase';
 })
 export class FirebaseService {
 
+
   fechaCaja = this.getFechaHoy();
 
   items$: Observable<any[]>;
@@ -105,7 +106,7 @@ export class FirebaseService {
 
   checkApertura() {
 
-    return this.afs.collection('diario').doc(this.fechaCaja).get();
+    return this.afs.collection('diario').doc(this.fechaCaja).valueChanges();
   }
 
   addApertura(importe: number) {
@@ -132,6 +133,14 @@ export class FirebaseService {
     const yyyy = today.getFullYear();
 
     return yyyy + mm + dd;
+  }
+
+
+  // Valores
+
+  getLOV() {
+    return this.afs.collection('config').doc('lov').valueChanges();
+
   }
 
 }

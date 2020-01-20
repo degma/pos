@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CobroComponent } from '../cobro/cobro.component';
@@ -17,6 +17,7 @@ export class NuevaVentaComponent implements OnInit {
   descuentosVenta = 0;
   metodoPago = '';
   totalVenta = 0;
+
 
   constructor(private firebaseService: FirebaseService, public dialog: MatDialog) { }
 
@@ -59,12 +60,19 @@ export class NuevaVentaComponent implements OnInit {
     });
   }
 
+  cleanCarritoAfterClose() {
+    this.itemsCarrito = [];
+    this.descuentosVenta = 0;
+    this.subtotalVenta = 0;
+    this.metodoPago = '';
+  }
+
 
   cobrarDialog() {
 
-    if(this.itemsCarrito.length === 0){
+    if (this.itemsCarrito.length === 0) {
       return Swal.fire({
-        title: 'No se agegaron Items al carrito',        
+        title: 'No se agegaron Items al carrito',
         icon: 'info'
       });
     }
@@ -78,6 +86,12 @@ export class NuevaVentaComponent implements OnInit {
     };
 
     const dialogRef = this.dialog.open(CobroComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe( resp => {
+      if(resp.venta){
+        this.cleanCarritoAfterClose();
+      }
+    });
 
   }
 

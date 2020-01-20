@@ -18,13 +18,10 @@ export class CobroComponent implements OnInit {
   metodoPago = 'Efectivo';
   articulos: any[] = [];
 
-  @Output() cerrado = new EventEmitter();
-
   constructor(public dialogRef: MatDialogRef<CobroComponent>, @Inject(MAT_DIALOG_DATA) data, private firebaseService: FirebaseService) {
-    // dialogRef.disableClose = true;
+    dialogRef.disableClose = true;
     this.totalVenta = data.total;
     this.articulos = data.articulos;
-    console.log(this.totalVenta)
   }
 
   ventaForm = new FormGroup({
@@ -55,8 +52,11 @@ export class CobroComponent implements OnInit {
     this.ventaForm.controls.cambioPago.setValue(value - this.totalVenta);
   }
 
+  onCancelar() {
+    this.dialogRef.close({ venta: false });
+  }
+
   onSubmit() {
-    console.log(this.ventaForm.controls.montoPago.value);
     if (this.totalVenta > this.ventaForm.controls.montoPago.value) {
       return Swal.fire({
         title: 'Error',
@@ -69,15 +69,14 @@ export class CobroComponent implements OnInit {
     this.ventaForm.controls.ventaTotal.setValue(this.totalVenta);
     this.ventaForm.controls.cambioPago.setValue(this.cambio);
 
-    this.firebaseService.createVenta(this.ventaForm.value).then(resp => {
+    this.firebaseService.createVenta(this.ventaForm.value).then(resp => {      
       Swal.fire({
         title: 'OK',
         text: 'Se actualizó correctamente',
         icon: 'success'
       }).then((result) => {
         if (result.value) {
-          this.dialogRef.close();
-          this.cerrado.emit();
+          this.dialogRef.close({ venta: true });
         }
       });
     }).catch(resp => {
