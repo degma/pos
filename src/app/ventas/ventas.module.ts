@@ -21,12 +21,15 @@ import {
   MatSelectModule,
   MatInputModule,
   MatProgressBarModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatTableModule,
+  MatSortModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BuscadorComponent } from './nueva-venta/panel-items/buscador/buscador.component';
 import { AperturaComponent } from './caja/apertura/apertura.component';
 import { VentasDiaComponent } from './ventas-dia/ventas-dia.component';
+import { VentasDiaDetalleComponent } from './ventas-dia/ventas-dia-detalle/ventas-dia-detalle.component';
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import { VentasDiaComponent } from './ventas-dia/ventas-dia.component';
     ItemPropDialogComponent,
     BuscadorComponent,
     AperturaComponent,
-    VentasDiaComponent],
+    VentasDiaComponent,
+    VentasDiaDetalleComponent],
   imports: [
     CommonModule,
     VentasRoutingModule,
@@ -55,7 +59,9 @@ import { VentasDiaComponent } from './ventas-dia/ventas-dia.component';
     MatInputModule,
     AngularFontAwesomeModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatSortModule 
   ],
   entryComponents: [
     CobroComponent,

@@ -149,14 +149,22 @@ export class FirebaseService {
 
   //VENTAS
 
-  getVentaDia( dia: string){
+  getVentaDia(dia: string) {
     return this.afs.collection('diario').doc(dia).collection('ventas').snapshotChanges().pipe(map(c => {
       return c.map((a: any) => {
-        const data = a.payload.doc.data() as Item;
+        const data = a.payload.doc.data();
         data.id = a.payload.doc.id;
         return data;
       });
     }));
+  }
+
+  getDia(dia: string){
+    return this.afs.collection('diario').doc(dia).valueChanges();
+  }
+
+  getVenta(dia: string, idventa: string){
+    return this.afs.collection('diario').doc(dia).collection('ventas').doc(idventa).valueChanges();
   }
 
 }

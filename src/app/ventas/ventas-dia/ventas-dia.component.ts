@@ -3,6 +3,8 @@ import { switchMap } from 'rxjs/operators';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import { ParamMap, ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { VentaDia } from 'src/app/interfaces/ventadia.interface';
+
 
 @Component({
   selector: 'app-ventas-dia',
@@ -11,18 +13,23 @@ import { Observable } from 'rxjs';
 })
 export class VentasDiaComponent implements OnInit {
 
-  ventadia$: any;
+  ventadia$: VentaDia[];
   fecha: string;
+  datosDia: object;
+  loading = true;
 
-  constructor(private fs: FirebaseService, private route: ActivatedRoute, private router: Router) {
+  displayedColumns = ['timeStamp', 'metodoPago', 'nroComprobante', 'cantCuotas', 'items', 'ventaTotal', 'ver'];
+
+  constructor(private fs: FirebaseService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    this.route.paramMap.subscribe((resp: any) => {      
-      this.ventadia$ = resp.params.id;
-      this.fs.getVentaDia(this.ventadia$).subscribe( resp => console.log(resp))
+    this.route.paramMap.subscribe((resp: any) => {
+      this.fecha = resp.params.id;
+      this.fs.getVentaDia(this.fecha).subscribe((resp) => this.ventadia$ = resp);
     });
+    this.fs.getDia(this.fecha).subscribe((resp: object) => { this.datosDia = resp; console.log(resp); this.loading = false; });
   }
 
 }

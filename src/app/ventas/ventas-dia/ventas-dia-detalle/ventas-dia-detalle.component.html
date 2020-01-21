@@ -1,0 +1,78 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+<div class="container" *ngIf="!loading">
+   <div class="col-md-12">
+      <div class="invoice">                  
+         <!-- begin invoice-header -->
+         <div class="invoice-header">
+            <div class="invoice-from">               
+               <address class="m-t-5 m-b-5">                  
+                  Metodo/Pago: {{ venta.metodoPago }}<br>                  
+                  Cuotas: {{ venta.cantCuotas }}<br>                  
+               </address>
+            </div>
+            <div class="invoice-to">
+               <address class="m-t-5 m-b-5">                  
+                  Comprobante Nro: {{venta.nroComprobante | number:'6.0'}}<br>
+
+               </address>
+            </div>
+            <div class="invoice-date">               
+               <div class="date text-inverse m-t-5">{{venta.timeStamp.toMillis() | date:'short'}}</div>
+            </div>
+         </div>
+         <!-- end invoice-header -->
+         <!-- begin invoice-content -->
+         <div class="invoice-content">
+            <!-- begin table-responsive -->
+            <div class="table-responsive">
+               <table class="table table-invoice">
+                  <thead>
+                     <tr>
+                        <th>ITEM</th>
+                        <th class="text-center" width="10%">Precio</th>
+                        <th class="text-center" width="10%">Cantidad</th>
+                        <th class="text-right" width="20%">TOTAL</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr *ngFor="let item of venta.articulos">
+                        <td>
+                           <span class="text-inverse">{{ item.nombre }} ({{item.fabricante}})</span><br>                           
+                        </td>
+                        <td class="text-center">{{item.precio | currency:'ARS'}}</td>
+                        <td class="text-center">1</td>
+                        <td class="text-right">{{item.precio | currency:'ARS'}}</td>
+                     </tr>
+
+                  </tbody>
+               </table>
+            </div>
+            <!-- end table-responsive -->
+            <!-- begin invoice-price -->
+            <div class="invoice-price">
+               <div class="invoice-price-left">
+                  <div class="invoice-price-row">
+                     <div class="sub-price">
+                        <small>SUBTOTAL</small>
+                        <span class="text-inverse">{{ venta.ventaTotal | currency:'ARS'}}</span>
+                     </div>
+                     <div class="sub-price">
+                        <fa name="minus" class="text-muted"></fa>
+                     </div>
+                     <div class="sub-price">
+                        <small>DESCUENTOS</small>
+                        <span class="text-inverse">$0.00</span>
+                     </div>
+                  </div>
+               </div>
+               <div class="invoice-price-right">
+                  <small>TOTAL</small> <span class="f-w-600">{{venta.ventaTotal | currency:'ARS'}}</span>
+               </div>
+            </div>
+            <!-- end invoice-price -->
+         </div>
+         <!-- end invoice-content -->
+
+      </div>
+   </div>
+</div>

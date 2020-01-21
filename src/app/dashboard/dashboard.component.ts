@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
   cantidadArticulos: number;
   cantidadVentas: number;
   fechaCaja: Date;
+  fecha: string;
   importeApertura: number;
   totalVentas: number;
   loading = true;
@@ -22,6 +23,7 @@ export class DashboardComponent implements OnInit {
       this.cantidadArticulos = resp.cantidadArticulos;
       this.cantidadVentas = resp.cantidadVentas;
       this.fechaCaja = resp.timeStamp.toDate();
+      this.fecha = resp.fechaCaja;
       this.totalVentas = resp.totalVentas;
       this.loading = false;
     });

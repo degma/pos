@@ -27,6 +27,8 @@ export class VentasComponent implements OnInit {
         this.apertura.importeInicial = resp.importeInicial.toFixed(2);
         this.alert = true;
         this.loading = false;
+      } else {
+        this.loading = false;
       }
     });
   }

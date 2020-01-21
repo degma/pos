@@ -33,7 +33,8 @@ export class CobroComponent implements OnInit {
     recargoCuotas: new FormControl(0),
     valCuotas: new FormControl(0),
     nroComprobante: new FormControl(''),
-    articulos: new FormControl(this.articulos)
+    articulos: new FormControl(this.articulos),
+    timeStamp: new FormControl('')
   });
 
   ngOnInit() {
@@ -68,6 +69,7 @@ export class CobroComponent implements OnInit {
     this.ventaForm.controls.articulos.setValue(this.articulos);
     this.ventaForm.controls.ventaTotal.setValue(this.totalVenta);
     this.ventaForm.controls.cambioPago.setValue(this.cambio);
+    this.ventaForm.controls.timeStamp.setValue( new Date());
 
     this.firebaseService.createVenta(this.ventaForm.value).then(resp => {      
       Swal.fire({
