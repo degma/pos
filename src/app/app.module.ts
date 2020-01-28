@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID,NgModule } from '@angular/core';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -19,6 +19,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+// importar locales
+import localeEsAR from '@angular/common/locales/es-AR';
+import { registerLocaleData } from '@angular/common';
+
+// registrar los locales con el nombre que quieras utilizar a la hora de proveer
+
+registerLocaleData(localeEsAR, 'es-Ar');
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DashboardModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

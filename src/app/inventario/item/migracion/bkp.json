@@ -1,0 +1,18 @@
+[
+    {
+      "nombre": "CAMPERA RELIEVE CORAZON",
+      "descripcion": "",
+      "fabricante": "ORIANA",
+      "Categoria Prueba": "CAMPERAS",
+      "precio": 600,
+      "genero": "NENA"
+    },
+    {
+      "nombre": "CALZA JEANS",
+      "descripcion": "Talle 4 al talle 14",
+      "fabricante": "SADEY",
+      "Categoria Prueba": "CALZAS",
+      "precio": 340,
+      "genero": "NENA"
+    }
+  ]

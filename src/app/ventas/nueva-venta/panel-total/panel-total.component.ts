@@ -11,8 +11,8 @@ export class PanelTotalComponent implements OnInit {
   @Input() descuentosVenta = 0;
   @Output() pago = new EventEmitter();
   @Output() cancelado = new EventEmitter();
-  
 
+  
   constructor() { }
 
   ngOnInit() {

@@ -93,6 +93,21 @@ export class FirebaseService {
       .collection("ventas")
       .add(data)
       .then(resp => {
+        this.afs
+          .collection("diario")
+          .doc(this.fechaCaja)
+          .set(
+            {
+              cantidadVentas: firebase.firestore.FieldValue.increment(1),
+              totalVentas: firebase.firestore.FieldValue.increment(
+                data.montoPago
+              ),
+              cantidadArticulos: firebase.firestore.FieldValue.increment(
+                data.articulos.length
+              )
+            },
+            { merge: true }
+          );
         data.articulos.map(art => {
           this.afs
             .collection("items")
@@ -101,14 +116,17 @@ export class FirebaseService {
               { vendidos: firebase.firestore.FieldValue.increment(1) },
               { merge: true }
             );
-
           this.afs
             .collection("items")
             .doc(art.id)
             .collection("inventario")
             .doc(art.talle + "_" + art.color)
             .set(
-              { vendidos: firebase.firestore.FieldValue.increment(1) },
+              {
+                talle: art.talle,
+                color: art.color,
+                vendidos: firebase.firestore.FieldValue.increment(1)
+              },
               { merge: true }
             );
         });
@@ -138,7 +156,7 @@ export class FirebaseService {
     return this.afs
       .collection("diario")
       .doc(this.fechaCaja)
-      .get();
+      .valueChanges();
   }
 
   addApertura(importe: number) {
@@ -159,7 +177,7 @@ export class FirebaseService {
     return this.afs
       .collection("diario")
       .doc(this.fechaCaja)
-      .get();
+      .valueChanges();
   }
 
   // Otros
@@ -171,5 +189,51 @@ export class FirebaseService {
     const yyyy = today.getFullYear();
 
     return yyyy + mm + dd;
+  }
+
+  // Valores
+
+  getLOV() {
+    return this.afs
+      .collection("config")
+      .doc("lov")
+      .valueChanges();
+  }
+
+  addValor(tipo, name) {}
+
+  //VENTAS
+
+  getVentaDia(dia: string) {
+    return this.afs
+      .collection("diario")
+      .doc(dia)
+      .collection("ventas")
+      .snapshotChanges()
+      .pipe(
+        map(c => {
+          return c.map((a: any) => {
+            const data = a.payload.doc.data();
+            data.id = a.payload.doc.id;
+            return data;
+          });
+        })
+      );
+  }
+
+  getDia(dia: string) {
+    return this.afs
+      .collection("diario")
+      .doc(dia)
+      .valueChanges();
+  }
+
+  getVenta(dia: string, idventa: string) {
+    return this.afs
+      .collection("diario")
+      .doc(dia)
+      .collection("ventas")
+      .doc(idventa)
+      .valueChanges();
   }
 }

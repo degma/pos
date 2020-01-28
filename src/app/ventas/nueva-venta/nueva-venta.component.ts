@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CobroComponent } from '../cobro/cobro.component';
@@ -17,12 +17,14 @@ export class NuevaVentaComponent implements OnInit {
   descuentosVenta = 0;
   metodoPago = '';
   totalVenta = 0;
+  loading = true;
+
 
   constructor(private firebaseService: FirebaseService, public dialog: MatDialog) { }
 
   ngOnInit() {
 
-    this.firebaseService.items$.subscribe(resp => { console.log(resp); this.items = resp; });
+    this.firebaseService.items$.subscribe(resp => { this.items = resp; this.loading = false; });
 
   }
 
@@ -59,8 +61,22 @@ export class NuevaVentaComponent implements OnInit {
     });
   }
 
+  cleanCarritoAfterClose() {
+    this.itemsCarrito = [];
+    this.descuentosVenta = 0;
+    this.subtotalVenta = 0;
+    this.metodoPago = '';
+  }
+
 
   cobrarDialog() {
+
+    if (this.itemsCarrito.length === 0) {
+      return Swal.fire({
+        title: 'No se agegaron Items al carrito',
+        icon: 'info'
+      });
+    }
 
     this.totalVenta = this.subtotalVenta - this.descuentosVenta;
     const dialogConfig = new MatDialogConfig();
@@ -71,6 +87,12 @@ export class NuevaVentaComponent implements OnInit {
     };
 
     const dialogRef = this.dialog.open(CobroComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(resp => {
+      if (resp.venta) {
+        this.cleanCarritoAfterClose();
+      }
+    });
 
   }
 

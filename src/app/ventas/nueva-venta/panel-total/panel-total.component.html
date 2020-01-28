@@ -5,7 +5,7 @@
             <div class="card-body p-0">
                 <h1 class="card-title pricing-card-title text-center">
                     <small class="text-muted">TOTAL</small>
-                    $ {{ subtotalVenta - descuentosVenta}}
+                    $ {{ (subtotalVenta - descuentosVenta).toFixed(2) }}
                 </h1>
             </div>
 

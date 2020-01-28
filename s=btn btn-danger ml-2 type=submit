@@ -1,0 +1,84 @@
+[33mcommit cbd47cf79b229bec5c84a8d8b0b0456de2dbcf70[m[33m ([m[1;36mHEAD -> [m[1;32mcambios_casa[m[33m, [m[1;31morigin/cambios_casa[m[33m)[m
+Author: Martin Degraf <martinplate@gmail.com>
+Date:   Fri Jan 17 17:18:08 2020 -0300
+
+    cambios en el filtro
+
+[33mcommit c11d8d7fab7c25c11045704c92a90d3220c97876[m
+Author: Martin Degraf <martin.degraf@pjn.gov.ar>
+Date:   Thu Jan 16 14:35:03 2020 -0300
+
+    ventas x item
+
+[33mcommit 50ceb9a54f11918e4992b78ce64a8934d54febeb[m
+Author: Martin Degraf <martin.degraf@pjn.gov.ar>
+Date:   Tue Jan 14 13:06:51 2020 -0300
+
+    filtrso y componente buscar
+
+[33mcommit 7c6637b4b8d847d5ecd190d4ba38945cc6356ad3[m
+Author: Martin Degraf <martin.degraf@pjn.gov.ar>
+Date:   Mon Jan 13 14:24:46 2020 -0300
+
+    seleccion talle y color
+
+[33mcommit a4bcb63cd27b1842910d718a73f1e8bb823bcd62[m
+Author: Martin Degraf <martin.degraf@pjn.gov.ar>
+Date:   Fri Jan 10 14:17:42 2020 -0300
+
+    form venta
+
+[33mcommit 49673462a845b92176dd9db38f6ba4d313423748[m
+Author: Martin Degraf <martin.degraf@pjn.gov.ar>
+Date:   Thu Jan 9 14:51:52 2020 -0300
+
+    dialogo pago
+
+[33mcommit 6c3c9174314b24226e55d65819a8ec857a9e5035[m
+Author: Martin Degraf <martinplate@gmail.com>
+Date:   Thu Jan 9 07:25:38 2020 -0300
+
+    ventas ++
+
+[33mcommit 324d4120ffd119bd0fac8e1c3e11076e118b40fd[m
+Merge: 21b3d26 ec065e1
+Author: Martin Degraf <martin.degraf@pjn.gov.ar>
+Date:   Wed Jan 8 14:28:55 2020 -0300
+
+    Merge branch 'master' of https://github.com/degma/pos
+
+[33mcommit 21b3d264717ce6530436996938af5862b2011ec4[m
+Author: Martin Degraf <martin.degraf@pjn.gov.ar>
+Date:   Wed Jan 8 14:24:32 2020 -0300
+
+    UI de ventas
+
+[33mcommit ec065e1bf7d8a5d1341c4f56cbcf517347cd785c[m
+Author: Martin Degraf <martinplate@gmail.com>
+Date:   Tue Jan 7 12:38:03 2020 -0300
+
+    Delete environment.ts
+
+[33mcommit 8dbeb4f8b1e6bac686da5b63b0b966c4d771c629[m
+Author: Martin Degraf <martin.degraf@pjn.gov.ar>
+Date:   Tue Jan 7 12:17:36 2020 -0300
+
+    cnx con firebase
+
+[33mcommit 53c8fd77f03a04b1e55704719014f5fbfadd09b4[m
+Author: Martin Degraf <martin.degraf@pjn.gov.ar>
+Date:   Fri Jan 3 15:54:15 2020 -0300
+
+    primer commit
+
+[33mcommit a5990eb0beb72b29cff5e14ad39130ce6af16039[m
+Author: Martin Degraf <martin.degraf@pjn.gov.ar>
+Date:   Thu Jan 2 14:04:18 2020 -0300
+
+    first commit
+
+[33mcommit e609325d7f0733aaeff4140a956da3a01947f232[m
+Author: Martin Degraf <martin.degraf@pjn.gov.ar>
+Date:   Thu Jan 2 10:53:37 2020 -0300
+
+    initial commit

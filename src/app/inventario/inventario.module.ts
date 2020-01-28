@@ -8,16 +8,20 @@ import { ItemEditarComponent } from './item/item-editar/item-editar.component';
 import { InventarioComponent } from './inventario.component';
 import { InventarioRoutingModule } from './inventario-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminValoresComponent } from './lov/admin-valores/admin-valores.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { MigracionComponent } from './item/migracion/migracion.component';
 
 
 
 @NgModule({
-  declarations: [ItemDetalleComponent, ItemListaComponent, ItemEditarComponent, InventarioComponent],
+  declarations: [ItemDetalleComponent, ItemListaComponent, ItemEditarComponent, InventarioComponent, AdminValoresComponent, MigracionComponent],
   imports: [
     CommonModule,
     RouterModule,
     InventarioRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFontAwesomeModule
   ]
 })
 export class InventarioModule { }

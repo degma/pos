@@ -1,9 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import Swal from 'sweetalert2';
-
 
 
 
@@ -19,9 +18,8 @@ export class CobroComponent implements OnInit {
   metodoPago = 'Efectivo';
   articulos: any[] = [];
 
-
   constructor(public dialogRef: MatDialogRef<CobroComponent>, @Inject(MAT_DIALOG_DATA) data, private firebaseService: FirebaseService) {
-    // dialogRef.disableClose = true;
+    dialogRef.disableClose = true;
     this.totalVenta = data.total;
     this.articulos = data.articulos;
   }
@@ -35,11 +33,12 @@ export class CobroComponent implements OnInit {
     recargoCuotas: new FormControl(0),
     valCuotas: new FormControl(0),
     nroComprobante: new FormControl(''),
-    articulos: new FormControl(this.articulos)
+    articulos: new FormControl(this.articulos),
+    timeStamp: new FormControl('')
   });
 
   ngOnInit() {
-
+    this.ventaForm.controls.montoPago.setValue(this.totalVenta);
   }
 
   public onValChange(val: string) {
@@ -54,15 +53,34 @@ export class CobroComponent implements OnInit {
     this.ventaForm.controls.cambioPago.setValue(value - this.totalVenta);
   }
 
-  onSubmit() {    
-    
+  onCancelar() {
+    this.dialogRef.close({ venta: false });
+  }
+
+  onSubmit() {
+    if (this.totalVenta > this.ventaForm.controls.montoPago.value) {
+      return Swal.fire({
+        title: 'Error',
+        text: `El monto ingresado es menor al total de la venta ($ ${this.totalVenta})`,
+        icon: 'error'
+      });
+    }
+
     this.ventaForm.controls.articulos.setValue(this.articulos);
-    this.firebaseService.createVenta(this.ventaForm.value).then(resp => {
+    this.ventaForm.controls.ventaTotal.setValue(this.totalVenta);
+    this.ventaForm.controls.cambioPago.setValue(this.cambio);
+    this.ventaForm.controls.timeStamp.setValue( new Date());
+
+    this.firebaseService.createVenta(this.ventaForm.value).then(resp => {      
       Swal.fire({
         title: 'OK',
         text: 'Se actualizó correctamente',
         icon: 'success'
-      })
+      }).then((result) => {
+        if (result.value) {
+          this.dialogRef.close({ venta: true });
+        }
+      });
     }).catch(resp => {
       Swal.fire({
         title: 'Error',
@@ -70,7 +88,7 @@ export class CobroComponent implements OnInit {
         icon: 'error'
       });
     });
-    console.warn(this.ventaForm.value);
+
   }
 
 
